@@ -19,7 +19,6 @@ public class AuthController {
 
     @Autowired
     private JwtUtil jwtUtil;
-
     @Autowired
     private PasswordEncoder encoder;
 
