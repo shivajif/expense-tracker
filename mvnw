@@ -71,11 +71,16 @@ Darwin*)
   fi
   ;;
 esac
-
 if [ -z "$JAVA_HOME" ]; then
   if [ -r /etc/gentoo-release ]; then
     JAVA_HOME=$(java-config --jre-home)
   fi
+fi
+
+# Railway Java fix
+if [ -z "$JAVA_HOME" ]; then
+  JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+  export JAVA_HOME
 fi
 
 # For Cygwin, ensure paths are in UNIX format before anything is touched
