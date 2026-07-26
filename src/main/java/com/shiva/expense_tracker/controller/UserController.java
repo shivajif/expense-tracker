@@ -30,7 +30,7 @@ public class UserController {
         return userService.saveUser(user);
 
     }
-    @GetMapping("/api/users/profile")
+    @GetMapping("/users/profile")
     public User getProfile(
             Authentication authentication
     ){

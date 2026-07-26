@@ -12,14 +12,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+
 @Configuration
 public class SecurityConfig {
+
 
     @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
 
         http
                 .csrf(csrf -> csrf.disable())
@@ -30,44 +34,55 @@ public class SecurityConfig {
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
 
+
                 .authorizeHttpRequests(auth -> auth
 
-                        // Public APIs
+
+                        // PUBLIC APIs
                         .requestMatchers(
                                 "/api/users",
                                 "/api/auth/login"
                         ).permitAll()
 
-                        // Swagger
+
+                        // SWAGGER
                         .requestMatchers(
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**"
                         ).permitAll()
 
-                        // Protected APIs
+
+                        // PROTECTED APIs
                         .requestMatchers(
-                                "/profile/**",
-                                "/dashboard/**",
+                                "/api/users/profile",
                                 "/categories/**",
                                 "/transactions/**",
+                                "/dashboard/**",
                                 "/reports/**"
                         ).authenticated()
 
+
                         .anyRequest().authenticated()
+
                 )
+
 
                 .addFilterBefore(
                         jwtAuthenticationFilter,
                         UsernamePasswordAuthenticationFilter.class
                 );
 
+
         return http.build();
     }
 
+
+
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder(){
 
         return new BCryptPasswordEncoder();
 
     }
+
 }
