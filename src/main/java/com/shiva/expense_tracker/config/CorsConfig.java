@@ -17,7 +17,7 @@ public class CorsConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOrigins(List.of(
-                "https://expense-tracker-frontend-production-42a7.up.railway.app"
+                "www.useddomains.academy"
         ));
 
         configuration.setAllowedMethods(List.of(
