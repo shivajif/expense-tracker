@@ -3,8 +3,8 @@ package com.shiva.expense_tracker.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.cors.CorsConfigurationSource;
 
 import java.util.List;
 
@@ -17,10 +17,7 @@ public class CorsConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOrigins(List.of(
-                "http://localhost:5500",
-                "http://127.0.0.1:5500"
-                // Add your GitHub Pages URL here after deployment
-                // "https://yourusername.github.io"
+                "https://expense-tracker-frontend-production-42a7.up.railway.app"
         ));
 
         configuration.setAllowedMethods(List.of(
@@ -32,7 +29,6 @@ public class CorsConfig {
         ));
 
         configuration.setAllowedHeaders(List.of("*"));
-
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source =
@@ -42,5 +38,4 @@ public class CorsConfig {
 
         return source;
     }
-
 }
