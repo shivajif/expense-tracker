@@ -17,7 +17,7 @@ public class CorsConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOrigins(List.of(
-                "https://expensetracker.management/api"
+                "https://shivajif.github.io"
         ));
 
         configuration.setAllowedMethods(List.of(
